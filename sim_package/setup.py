@@ -23,7 +23,7 @@ class CustomSPTInstall(install):
 
         print('clean up...')
         sp.run(f'rm -rf ../dlls && mkdir ../dlls && mv liblsp.* ../dlls && cd .. && rm -rf {repo_name}', shell=True, cwd=f'src/sim_package/{repo_name}')
-        sp.run('tree')
+        # sp.run('tree')
         super().run()
 
 

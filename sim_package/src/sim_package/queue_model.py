@@ -20,12 +20,32 @@ class Node:
         self.status = None
 
     def create_virtual_node(self):
+        """
+        Creating a virtual node that has slight noise in location for the simulation,
+
+        Returns:
+            _type_: Node
+        """
         return Node('vn_source_{}'.format(self.nid), self.lon+0.001, self.lat+0.001, 'vn_source', simulation=self.simulation)
 
     def create_virtual_link(self):
+        """
+        Creating a virtual link -- look at create_virtual_node(self) for the simulation.
+
+        Returns:
+            _type_: Link
+        """
         return Link('vl_in_{}'.format(self.nid), 100, 0, 0, 100000, 'vl_in', 'vn_source_{}'.format(self.nid), self.nid, 'LINESTRING({} {}, {} {})'.format(self.lon+0.001, self.lat+0.001, self.lon, self.lat), simulation=self.simulation)
 
     def calculate_straight_ahead_links(self, node_id_dict=None, link_id_dict=None):
+        """_summary_: Calculate the straight ahead links for each node.
+        
+        _description_: Finds the closest straight ahead link (?)
+
+        Args:
+            node_id_dict (_type_, optional): _description_. Defaults to None.
+            link_id_dict (_type_, optional): _description_. Defaults to None.
+        """
         for il in self.in_links.keys():
             x_start = node_id_dict[link_id_dict[il].start_nid].lon
             y_start = node_id_dict[link_id_dict[il].start_nid].lat
@@ -296,5 +316,13 @@ class Simulation:
         for row in od_df.itertuples():
             self.all_agents[row.agent_id] = Agent(getattr(row, 'agent_id'), getattr(row, 'origin_node_id'), getattr(row, 'destin_node_id'), getattr(row, 'dept_time'), getattr(row, 'veh_len'), getattr(row, 'gps_reroute'), simulation=self)
 
+
+class RandomNode(Node):
+    def __init__(self, node_id, lon, lat, ntype, osmid=None, simulation=None):
+        super().__init__(node_id, lon, lat, ntype, osmid, simulation)
+        self.out_links = []
+        self.in_links = dict()
+        self.straight_ahead_links = []
+        self.virtual_node = None
 
 
