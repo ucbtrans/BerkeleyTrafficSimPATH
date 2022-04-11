@@ -19,6 +19,8 @@ class Node:
         self.go_vehs = [] ### veh that moves in this time step
         self.status = None
 
+
+    #what is the reasoning behind creating a virtual node or link
     def create_virtual_node(self):
         """
         Creating a virtual node that has slight noise in location for the simulation,
@@ -49,7 +51,11 @@ class Node:
         for il in self.in_links.keys():
             x_start = node_id_dict[link_id_dict[il].start_nid].lon
             y_start = node_id_dict[link_id_dict[il].start_nid].lat
+
+            #exactly what?
             in_vec = (self.lon-x_start, self.lat-y_start)
+
+
             sa_ol = None ### straight ahead out link
             ol_dir = 180
             for ol in self.out_links:
@@ -59,6 +65,7 @@ class Node:
                 dot = (in_vec[0]*out_vec[0] + in_vec[1]*out_vec[1])
                 det = (in_vec[0]*out_vec[1] - in_vec[1]*out_vec[0])
                 new_ol_dir = np.arctan2(det, dot)*180/np.pi
+                #understand the update
                 if abs(new_ol_dir)<ol_dir:
                     sa_ol = ol
                     ol_dir = new_ol_dir
@@ -276,8 +283,14 @@ class Simulation:
 
     def create_network(self, nodes_df, links_df):
         ### create graph
+
+        #why 1000?
         links_df['capacity'] = links_df['lanes'] * 1000
-        links_df['fft'] = np.where(links_df['lanes']<=0, 1e8, links_df['length']/links_df['maxmph']*2.2369)
+
+        #why 2.2369
+        links_df['fft'] = np.where(links_df['lanes']<=0, 1e8, links_df['length']/links_df['maxmph']*2.2369) 
+
+
         self.g = interface.from_dataframe(links_df, 'start_node_id', 'end_node_id', 'fft')
 
         ### Create link and node objects
