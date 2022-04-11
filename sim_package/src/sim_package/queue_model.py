@@ -325,4 +325,7 @@ class RandomNode(Node):
         self.straight_ahead_links = []
         self.virtual_node = None
 
+    def find():
+        return
+
 
