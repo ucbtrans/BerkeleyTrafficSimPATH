@@ -31,6 +31,7 @@ setup(
     name=PACKAGE_NAME,
     version='0.0.4',    
     description='A traffic simulation package made by berkeley PATH',
+    scripts=['./'],
     url='https://github.com/ucbtrans/Fall2021/traffic_sim',
     author='Abhinav Dhulipala',
     author_email='abhinav.dhulipala@berkeley.edu',
