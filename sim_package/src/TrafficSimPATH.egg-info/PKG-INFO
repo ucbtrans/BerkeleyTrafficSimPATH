@@ -6,12 +6,8 @@ Home-page: https://github.com/ucbtrans/Fall2021/traffic_sim
 Author: Abhinav Dhulipala
 Author-email: abhinav.dhulipala@berkeley.edu
 License: MIT
-Platform: UNKNOWN
 Classifier: Development Status :: 1 - Planning
 Classifier: Intended Audience :: Science/Research
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: POSIX :: Linux
 Classifier: Programming Language :: Python :: 3.9
-
-UNKNOWN
-

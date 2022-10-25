@@ -6,6 +6,9 @@ src/TrafficSimPATH.egg-info/dependency_links.txt
 src/TrafficSimPATH.egg-info/entry_points.txt
 src/TrafficSimPATH.egg-info/requires.txt
 src/TrafficSimPATH.egg-info/top_level.txt
+src/TrafficSimPATH.egg-info/.ipynb_checkpoints/dependency_links-checkpoint.txt
+src/TrafficSimPATH.egg-info/.ipynb_checkpoints/entry_points-checkpoint.txt
+src/TrafficSimPATH.egg-info/.ipynb_checkpoints/requires-checkpoint.txt
 src/sim_package/__init__.py
 src/sim_package/interface.py
 src/sim_package/queue_model.cpp
